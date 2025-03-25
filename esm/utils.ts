@@ -1,8 +1,8 @@
 /* eslint-disable functional/no-expression-statements */
 import { Array, Either, Equal, Option, pipe, String, Utils } from 'effect';
 import * as assert from 'node:assert';
-import * as path from 'node:path';
 
+const universalPathSep = /[/\\]/;
 // ----------------------------
 // Primitives
 // ----------------------------
@@ -82,7 +82,7 @@ export function assertRight<R, L>(
  */
 export const moduleTagFromTestFilePath = (filePath: string): Option.Option<string> =>
 	Option.gen(function* () {
-		const pathParts = filePath.split(path.sep);
+		const pathParts = filePath.split(universalPathSep);
 		const pathPartsLength = pathParts.length;
 		const packageName = yield* pipe(
 			pathParts,

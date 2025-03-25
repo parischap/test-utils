@@ -1,6 +1,6 @@
 /* eslint-disable functional/no-expression-statements */
 import { TEUtils } from '@parischap/test-utils';
-import { Array, Either, Option } from 'effect';
+import { Array, Either, Equal, Option } from 'effect';
 import { describe, expect, it } from 'vitest';
 
 describe('TEUtils', () => {
@@ -75,15 +75,18 @@ describe('TEUtils', () => {
 
 	describe('moduleTagFromTestFilePath', () => {
 		it('should return the module tag for a valid test file path', () => {
-			const filePath = 'C:\\project\\packages\\module\\tests\\example.test.ts';
-			const result = TEUtils.moduleTagFromTestFilePath(filePath);
-			expect(result).toEqual(Option.some('@parischap/module/example/'));
+			expect(
+				Equal.equals(
+					TEUtils.moduleTagFromTestFilePath('C:/project/packages/module/tests/example.test.ts'),
+					Option.some('@parischap/module/example/')
+				)
+			).toBe(true);
 		});
 
 		it('should return none for an invalid test file path', () => {
-			const filePath = 'C:\\project\\packages\\module\\tests\\example.js';
-			const result = TEUtils.moduleTagFromTestFilePath(filePath);
-			expect(result).toEqual(Option.none());
+			expect(Option.isNone(TEUtils.moduleTagFromTestFilePath('C:/project/tests/example.js'))).toBe(
+				true
+			);
 		});
 	});
 });
