@@ -12,8 +12,8 @@ describe('TEUtils', () => {
 		it('Arrays of options matching', () => {
 			expect(() =>
 				TEUtils.assertEquals(
-					Array.make(Option.some(1), Option.none()),
-					Array.make(Option.some(1), Option.none())
+					Array.make(Option.some(1), Array.make(Option.none(), Option.some(3))),
+					Array.make(Option.some(1), Array.make(Option.none(), Option.some(3)))
 				)
 			).not.toThrow();
 		});
