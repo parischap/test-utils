@@ -1,0 +1,89 @@
+/* eslint-disable functional/no-expression-statements */
+import { TEUtils } from '@parischap/test-utils';
+import { Array, Either, Option } from 'effect';
+import { describe, expect, it } from 'vitest';
+
+describe('TEUtils', () => {
+	describe('assertEquals', () => {
+		it('Primitive values', () => {
+			expect(() => TEUtils.assertEquals(1, 1)).not.toThrow();
+		});
+
+		it('Arrays of options matching', () => {
+			expect(() =>
+				TEUtils.assertEquals(
+					Array.make(Option.some(1), Option.none()),
+					Array.make(Option.some(1), Option.none())
+				)
+			).not.toThrow();
+		});
+
+		it('Arrays of options not matching', () => {
+			expect(() =>
+				TEUtils.assertEquals(
+					Array.make(Option.some(1), Option.some(2)),
+					Array.make(Option.some(1), Option.none())
+				)
+			).toThrow();
+		});
+	});
+
+	describe('assertTrue', () => {
+		it('should assert that a value is true', () => {
+			expect(() => TEUtils.assertTrue(true)).not.toThrow();
+			expect(() => TEUtils.assertTrue(false)).toThrow();
+		});
+	});
+
+	describe('assertFalse', () => {
+		it('should assert that a value is false', () => {
+			expect(() => TEUtils.assertFalse(false)).not.toThrow();
+			expect(() => TEUtils.assertFalse(true)).toThrow();
+		});
+	});
+
+	describe('assertNone', () => {
+		it('should assert that an Option is none', () => {
+			expect(() => TEUtils.assertNone(Option.none())).not.toThrow();
+			expect(() => TEUtils.assertNone(Option.some(1))).toThrow();
+		});
+	});
+
+	describe('assertSome', () => {
+		it('should assert that an Option is some with the expected value', () => {
+			expect(() => TEUtils.assertSome(Option.some(1), 1)).not.toThrow();
+			expect(() => TEUtils.assertSome(Option.some(1), 2)).toThrow();
+			expect(() => TEUtils.assertSome(Option.none(), 2)).toThrow();
+		});
+	});
+
+	describe('assertLeft', () => {
+		it('should assert that an Either is left with the expected value', () => {
+			expect(() => TEUtils.assertLeft(Either.left('error'), 'error')).not.toThrow();
+			expect(() => TEUtils.assertLeft(Either.left('error'), 'different')).toThrow();
+			expect(() => TEUtils.assertLeft(Either.right('error'), 'error')).toThrow();
+		});
+	});
+
+	describe('assertRight', () => {
+		it('should assert that an Either is right with the expected value', () => {
+			expect(() => TEUtils.assertRight(Either.right(42), 42)).not.toThrow();
+			expect(() => TEUtils.assertRight(Either.right(42), 43)).toThrow();
+			expect(() => TEUtils.assertRight(Either.left(42), 42)).toThrow();
+		});
+	});
+
+	describe('moduleTagFromTestFilePath', () => {
+		it('should return the module tag for a valid test file path', () => {
+			const filePath = 'C:\\project\\packages\\module\\tests\\example.test.ts';
+			const result = TEUtils.moduleTagFromTestFilePath(filePath);
+			expect(result).toEqual(Option.some('@parischap/module/example/'));
+		});
+
+		it('should return none for an invalid test file path', () => {
+			const filePath = 'C:\\project\\packages\\module\\tests\\example.js';
+			const result = TEUtils.moduleTagFromTestFilePath(filePath);
+			expect(result).toEqual(Option.none());
+		});
+	});
+});
