@@ -43,7 +43,7 @@ export function assertNone<A>(
 	option: Option.Option<A>,
 	message?: string
 ): asserts option is Option.None<never> {
-	deepStrictEqual(option, Option.none(), message);
+	assertEquals(option, Option.none(), message);
 }
 
 export function assertSome<A>(
@@ -51,7 +51,7 @@ export function assertSome<A>(
 	expected: A,
 	message?: string
 ): asserts option is Option.Some<A> {
-	deepStrictEqual(option, Option.some(expected), message);
+	assertEquals(option, Option.some(expected), message);
 }
 
 // ----------------------------
@@ -63,7 +63,7 @@ export function assertLeft<R, L>(
 	expected: L,
 	message?: string
 ): asserts either is Either.Left<L, never> {
-	deepStrictEqual(either, Either.left(expected), message);
+	assertEquals(either, Either.left(expected), message);
 }
 
 export function assertRight<R, L>(
@@ -71,7 +71,7 @@ export function assertRight<R, L>(
 	expected: R,
 	message?: string
 ): asserts either is Either.Right<never, R> {
-	deepStrictEqual(either, Either.right(expected), message);
+	assertEquals(either, Either.right(expected), message);
 }
 
 /**
