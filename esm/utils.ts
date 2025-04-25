@@ -60,10 +60,11 @@ export function assertSome<A>(
 
 export function assertLeft<R, L>(
 	either: Either.Either<R, L>,
-	expected: L,
+	expected?: L,
 	message?: string
 ): asserts either is Either.Left<L, never> {
-	assertEquals(either, Either.left(expected), message);
+	if (expected === undefined) assertTrue(Either.isLeft(either), message);
+	else assertEquals(either, Either.left(expected), message);
 }
 
 export function assertRight<R, L>(
