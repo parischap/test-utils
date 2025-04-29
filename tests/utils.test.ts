@@ -59,9 +59,17 @@ describe('TEUtils', () => {
 
 	describe('assertLeft', () => {
 		it('should assert that an Either is left with the expected value', () => {
-			expect(() => TEUtils.assertLeft(Either.left('error'), 'error')).not.toThrow();
-			expect(() => TEUtils.assertLeft(Either.left('error'), 'different')).toThrow();
-			expect(() => TEUtils.assertLeft(Either.right('error'), 'error')).toThrow();
+			expect(() => TEUtils.assertLeft(Either.left('foo'), 'foo')).not.toThrow();
+			expect(() => TEUtils.assertLeft(Either.left('foo'), 'bar')).toThrow();
+			expect(() => TEUtils.assertLeft(Either.right('foo'), 'foo')).toThrow();
+		});
+	});
+
+	describe('assertLeftMessage', () => {
+		it('should assert that an Either is left with the expected message', () => {
+			expect(() => TEUtils.assertLeftMessage(Either.left(new Error('foo')), 'foo')).not.toThrow();
+			expect(() => TEUtils.assertLeftMessage(Either.left(new Error('foo')), 'bar')).toThrow();
+			expect(() => TEUtils.assertLeftMessage(Either.right(new Error('foo')), 'foo')).toThrow();
 		});
 	});
 

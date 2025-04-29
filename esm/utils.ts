@@ -67,6 +67,15 @@ export function assertLeft<R, L>(
 	else assertEquals(either, Either.left(expected), message);
 }
 
+export function assertLeftMessage<R, L extends { readonly message: string }>(
+	either: Either.Either<R, L>,
+	expected: string,
+	message?: string
+): asserts either is Either.Left<L, never> {
+	assertLeft(either, undefined, message);
+	strictEqual(either.left.message, expected, message);
+}
+
 export function assertRight<R, L>(
 	either: Either.Either<R, L>,
 	expected: R,
