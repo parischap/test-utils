@@ -52,6 +52,7 @@ describe('TEUtils', () => {
 	describe('assertSome', () => {
 		it('should assert that an Option is some with the expected value', () => {
 			expect(() => TEUtils.assertSome(Option.some(1), 1)).not.toThrow();
+			expect(() => TEUtils.assertSome(Option.some(1))).not.toThrow();
 			expect(() => TEUtils.assertSome(Option.some(1), 2)).toThrow();
 			expect(() => TEUtils.assertSome(Option.none(), 2)).toThrow();
 		});
@@ -60,6 +61,7 @@ describe('TEUtils', () => {
 	describe('assertLeft', () => {
 		it('should assert that an Either is left with the expected value', () => {
 			expect(() => TEUtils.assertLeft(Either.left('foo'), 'foo')).not.toThrow();
+			expect(() => TEUtils.assertLeft(Either.left('foo'))).not.toThrow();
 			expect(() => TEUtils.assertLeft(Either.left('foo'), 'bar')).toThrow();
 			expect(() => TEUtils.assertLeft(Either.right('foo'), 'foo')).toThrow();
 		});
@@ -76,6 +78,7 @@ describe('TEUtils', () => {
 	describe('assertRight', () => {
 		it('should assert that an Either is right with the expected value', () => {
 			expect(() => TEUtils.assertRight(Either.right(42), 42)).not.toThrow();
+			expect(() => TEUtils.assertRight(Either.right(42))).not.toThrow();
 			expect(() => TEUtils.assertRight(Either.right(42), 43)).toThrow();
 			expect(() => TEUtils.assertRight(Either.left(42), 42)).toThrow();
 		});

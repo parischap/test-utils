@@ -48,10 +48,11 @@ export function assertNone<A>(
 
 export function assertSome<A>(
 	option: Option.Option<A>,
-	expected: A,
+	expected?: A,
 	message?: string
 ): asserts option is Option.Some<A> {
-	assertEquals(option, Option.some(expected), message);
+	if (expected === undefined) assertTrue(Option.isSome(option), message);
+	else assertEquals(option, Option.some(expected), message);
 }
 
 // ----------------------------
@@ -78,10 +79,11 @@ export function assertLeftMessage<R, L extends { readonly message: string }>(
 
 export function assertRight<R, L>(
 	either: Either.Either<R, L>,
-	expected: R,
+	expected?: R,
 	message?: string
 ): asserts either is Either.Right<never, R> {
-	assertEquals(either, Either.right(expected), message);
+	if (expected === undefined) assertTrue(Either.isRight(either), message);
+	else assertEquals(either, Either.right(expected), message);
 }
 
 /**

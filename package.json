@@ -26,7 +26,7 @@
 		"prodify": "prodify",
 		"examples": ""
 	},
-	"packageManager": "pnpm@10.7.1",
+	"packageManager": "pnpm@10.10.0",
 	"devDependencies": {
 		"globals": "latest",
 		"ts-deepmerge": "latest",
@@ -80,7 +80,7 @@
 		"scripts": {},
 		"devDependencies": {},
 		"peerDependencies": {
-			"effect": "^3.14.11"
+			"effect": "^3.14.19"
 		},
 		"publishConfig": {},
 		"packageManager": "",
@@ -96,7 +96,7 @@
 	},
 	"dependencies": {},
 	"peerDependencies": {
-		"effect": "^3.14.15"
+		"effect": "^3.14.19"
 	},
 	"repository": {
 		"type": "git",
