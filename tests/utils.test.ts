@@ -28,6 +28,30 @@ describe('TEUtils', () => {
 		});
 	});
 
+	describe('assertNotEquals', () => {
+		it('Primitive values', () => {
+			expect(() => TEUtils.assertNotEquals(1, 2)).not.toThrow();
+		});
+
+		it('Arrays of options matching', () => {
+			expect(() =>
+				TEUtils.assertNotEquals(
+					Array.make(Option.some(1), Array.make(Option.none(), Option.some(3))),
+					Array.make(Option.some(1), Array.make(Option.none(), Option.some(3)))
+				)
+			).toThrow();
+		});
+
+		it('Arrays of options not matching', () => {
+			expect(() =>
+				TEUtils.assertNotEquals(
+					Array.make(Option.some(1), Option.some(2)),
+					Array.make(Option.some(1), Option.none())
+				)
+			).not.toThrow();
+		});
+	});
+
 	describe('assertTrue', () => {
 		it('should assert that a value is true', () => {
 			expect(() => TEUtils.assertTrue(true)).not.toThrow();

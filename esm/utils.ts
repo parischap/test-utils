@@ -28,6 +28,14 @@ export function assertEquals<A>(actual: A, expected: A, message?: string) {
 	}
 }
 
+/** Asserts that `actual` is not equal to `expected` using the `Equal.equals` trait. */
+export function assertNotEquals<A>(actual: A, expected: A, message?: string) {
+	assertFalse(
+		Utils.structuralRegion(() => Equal.equals(actual, expected)),
+		message
+	);
+}
+
 export function assertTrue(self: boolean, message?: string): asserts self is true {
 	strictEqual(self, true, message);
 }
