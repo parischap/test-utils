@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       effect:
-        specifier: ^3.14.19
-        version: 3.14.19
+        specifier: ^3.15.4
+        version: 3.15.4
     devDependencies:
       '@babel/cli':
         specifier: latest
@@ -35,7 +35,7 @@ importers:
         version: 9.22.0
       '@parischap/configs':
         specifier: latest
-        version: 1.25.0
+        version: 1.26.0
       '@parischap/test-utils':
         specifier: link:.
         version: 'link:'
@@ -460,8 +460,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@parischap/configs@1.25.0':
-    resolution: {integrity: sha512-2seoy80Bj6eQWDpSCRpWRSRqQyVSH9QZEuR7lzU6tYvGxYnQ0263wv7rczvaVK4UY8JT0T2z/rkjGfXSIoZtyA==}
+  '@parischap/configs@1.26.0':
+    resolution: {integrity: sha512-D/Yw1BxEVxm1yaxwSMs5iCKUG1dPEg5B+aaxNBIPTigJLWzUu9ve9rnkIxW7+hJ5tQlDWswNlyf+YH6DqH23qw==}
     hasBin: true
 
   '@pkgjs/parseargs@0.11.0':
@@ -996,8 +996,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  effect@3.14.19:
-    resolution: {integrity: sha512-CR8zahxcX0XNSq9oXYO07Gb3aT9Zz5orne6Cr1OlnyLY7mggyORaIN56/bskhJ1+dVmzEspELLlyGfIsYvzLPA==}
+  effect@3.15.4:
+    resolution: {integrity: sha512-bcikyXIhzIEsUNjlgNhEC3J6xAn8iDM8z/x9k52fb3daN5iKm1rlr6Ho3TNgXM48tUUYBnTAyunk+kVzx/u8kA==}
 
   electron-to-chromium@1.5.123:
     resolution: {integrity: sha512-refir3NlutEZqlKaBLK0tzlVLe5P2wDKS7UQt/3SpibizgsRAPOsqQC3ffw1nlv3ze5gjRQZYHoPymgVZkplFA==}
@@ -2604,7 +2604,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@parischap/configs@1.25.0': {}
+  '@parischap/configs@1.26.0': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -3149,7 +3149,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  effect@3.14.19:
+  effect@3.15.4:
     dependencies:
       '@standard-schema/spec': 1.0.0
       fast-check: 3.23.2
