@@ -1,5 +1,5 @@
 /* eslint-disable functional/no-expression-statements */
-import { Array, Either, Equal, Option, pipe, String, Utils } from 'effect';
+import { Array, Either, Equal, Option, pipe, Predicate, String, Utils } from 'effect';
 import * as assert from 'node:assert';
 
 const universalPathSep = /[/\\]/;
@@ -92,6 +92,36 @@ export function assertRight<R, L>(
 ): asserts either is Either.Right<never, R> {
 	if (expected === undefined) assertTrue(Either.isRight(either), message);
 	else assertEquals(either, Either.right(expected), message);
+}
+
+// ----------------------------
+// Throwing
+// ----------------------------
+export function throws(thunk: () => void, error?: Error | ((u: unknown) => undefined)) {
+	let throwError;
+	try {
+		thunk();
+		throwError = true;
+	} catch (e) {
+		throwError = false;
+		if (error !== undefined) {
+			if (Predicate.isFunction(error)) {
+				error(e);
+			} else {
+				deepStrictEqual(e, error);
+			}
+		}
+	}
+	if (throwError) fail('Expected to throw an error');
+}
+
+/**
+ * Asserts that `thunk` does not throw an error.
+ *
+ * @since 0.21.0
+ */
+export function doesNotThrow(thunk: () => void, message?: string) {
+	assert.doesNotThrow(thunk, message);
 }
 
 /**

@@ -108,6 +108,20 @@ describe('TEUtils', () => {
 		});
 	});
 
+	describe('throws', () => {
+		it('should assert that an error is thrown', () => {
+			expect(() => TEUtils.throws(() => BigInt(+Infinity))).not.toThrow();
+			expect(() => TEUtils.throws(() => BigInt(5))).toThrow();
+		});
+	});
+
+	describe('doesNotThrow', () => {
+		it('should assert that an error is not thrown', () => {
+			expect(() => TEUtils.doesNotThrow(() => BigInt(5))).not.toThrow();
+			expect(() => TEUtils.doesNotThrow(() => BigInt(+Infinity))).toThrow();
+		});
+	});
+
 	describe('moduleTagFromTestFilePath', () => {
 		it('should return the module tag for a valid test file path', () => {
 			expect(
