@@ -8,7 +8,7 @@ export default merge(
 		devDependencies: {},
 		internalPeerDependencies: {},
 		// Add Effect as a peerDep. Otherwise, Equal.equals from this package will call an object's .toEqual method which in turn will call Equal.equals from another package. Moreover, the StructuralRegion setting will have a different value in each Effect library.
-		externalPeerDependencies: { effect: Configs.constants.effectVersion },
+		externalPeerDependencies: { effect: '^3.18.1' },
 		examples: [],
 		scripts: {},
 		environment: Configs.Environment.Type.Node,
