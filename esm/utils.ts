@@ -98,7 +98,9 @@ export function assertRight<R, L>(
 // Throwing
 // ----------------------------
 export function throws(thunk: () => void, error?: Error | ((u: unknown) => undefined)) {
+	/* eslint-disable-next-line functional/no-let*/
 	let throwError;
+	/* eslint-disable-next-line functional/no-try-statements*/
 	try {
 		thunk();
 		throwError = true;
@@ -152,3 +154,18 @@ export const moduleTagFromTestFilePath = (filePath: string): Option.Option<strin
 		);
 		return '@parischap/' + packageName + '/' + moduleName + '/';
 	});
+
+/**
+ * Function that returns a `true` type if the two type parameters are equal. Returns a `false` type
+ * otherwise
+ *
+ * @category Utils
+ */
+
+export function areEqualTypes<A, B>(): readonly [A] extends readonly [B] ?
+	readonly [B] extends readonly [A] ?
+		true
+	:	false
+:	false {
+	return undefined as never;
+}

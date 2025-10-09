@@ -1,4 +1,3 @@
-/* eslint-disable functional/no-expression-statements */
 import { TEUtils } from '@parischap/test-utils';
 import { Array, Either, Equal, Option } from 'effect';
 import { describe, expect, it } from 'vitest';
@@ -110,7 +109,7 @@ describe('TEUtils', () => {
 
 	describe('throws', () => {
 		it('should assert that an error is thrown', () => {
-			expect(() => TEUtils.throws(() => BigInt(+Infinity))).not.toThrow();
+			expect(() => TEUtils.throws(() => BigInt(Infinity))).not.toThrow();
 			expect(() => TEUtils.throws(() => BigInt(5))).toThrow();
 		});
 	});
@@ -118,7 +117,7 @@ describe('TEUtils', () => {
 	describe('doesNotThrow', () => {
 		it('should assert that an error is not thrown', () => {
 			expect(() => TEUtils.doesNotThrow(() => BigInt(5))).not.toThrow();
-			expect(() => TEUtils.doesNotThrow(() => BigInt(+Infinity))).toThrow();
+			expect(() => TEUtils.doesNotThrow(() => BigInt(Infinity))).toThrow();
 		});
 	});
 
@@ -138,4 +137,8 @@ describe('TEUtils', () => {
 			);
 		});
 	});
+
+	TEUtils.areEqualTypes<number, number>() satisfies true;
+	TEUtils.areEqualTypes<number, 3>() satisfies false;
+	TEUtils.areEqualTypes<3, number>() satisfies false;
 });
