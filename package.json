@@ -13,7 +13,7 @@
 		"bundle": "bundle-files",
 		"generate-types": "tsc -b tsconfig.esm.json --emitDeclarationOnly --force",
 		"compile": "pnpm bundle && pnpm prodify",
-		"build-and-publish": "echo \"private package cannot be published\"",
+		"build-and-publish": "pnpm build && pnpm checks && pnpm publish-to-npm",
 		"docgen": "echo \"docgen not activated for this package\"",
 		"circular": "madge --extensions ts --circular --no-color --no-spinner esm",
 		"checks": "pnpm circular && pnpm lint && pnpm tscheck && pnpm test",
@@ -84,7 +84,20 @@
 		"pnpm": {},
 		"type": ""
 	},
-	"private": true,
+	"bugs": {
+		"url": "https://github.com/parischap/test-utils/issues"
+	},
+	"funding": [
+		{
+			"type": "ko-fi",
+			"url": "https://ko-fi.com/parischap"
+		}
+	],
+	"keywords": [
+		"effect",
+		"typescript",
+		"functional-programming"
+	],
 	"description": "Your description",
 	"module": "./esm/index.js",
 	"exports": {

@@ -8,9 +8,9 @@ export default Configs.configOnePackageRepo({
 	externalPeerDependencies: {},
 	examples: [],
 	scripts: {},
-	environment: 0,
+	environment: Configs.Environment.Type.Node,
 	bundled: true,
-	visibility: 2,
+	visibility: Configs.Visibility.Type.Public,
 	hasStaticFolder: false,
 	hasDocGen: false,
 	keywords: []
