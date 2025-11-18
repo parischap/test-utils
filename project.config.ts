@@ -5,7 +5,8 @@ export default Configs.configOnePackageRepo({
   packageName: basename(import.meta.dirname),
   description: 'Package containing test utilities',
   environment: 'Node',
-  packageType: 'Library',
+  peerDependencies: Configs.constants.effectDependencies,
+  buildMethod: 'Transpile',
   isPublished: false,
   hasDocGen: false,
 });
