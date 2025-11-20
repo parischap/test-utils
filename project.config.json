@@ -1,0 +1,10 @@
+{
+  "configName": "configOnePackageRepo",
+  "description": "Package containing test utilities",
+  "environment": "Node",
+  "buildMethod": "Transpile",
+  "isPublished": false,
+  "hasDocGen": false,
+  "useEffectAsPeerDependency": true
+}
+
