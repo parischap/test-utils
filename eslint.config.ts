@@ -50,7 +50,7 @@ const javascriptConfigForNonMdFiles: ConfigArray = defineConfig(
       functional.configs.externalTypeScriptRecommended as never,
     ],
     settings: {
-      immutability: {
+      /*immutability: {
         overrides: [
           {
             type: {
@@ -67,7 +67,7 @@ const javascriptConfigForNonMdFiles: ConfigArray = defineConfig(
             to: 'ReadonlyDeep',
           },
         ],
-      },
+      },*/
     },
     languageOptions: {
       parserOptions: {
@@ -96,7 +96,7 @@ const javascriptConfigForNonMdFiles: ConfigArray = defineConfig(
         },
       ],*/
       'functional/immutable-data': 'error',
-      /* Only activate this rule every now and again to check my work. It takes a lot of time and it triggers errors for Option's and Either's which I did not manage to silence */
+      /* Only activate these rules every now and again to check my work. It takes a lot of time and it triggers errors for Option's and Either's which I did not manage to silence */
       'functional/prefer-immutable-types':'off',
       'functional/type-declaration-immutability':'off',
       /*'functional/prefer-immutable-types': [
